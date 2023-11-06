@@ -17,3 +17,5 @@
     </ul>
   </li>
 </ul>
+
+_The project is still very new. Sorry for the problems..._
