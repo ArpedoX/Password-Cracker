@@ -1,16 +1,19 @@
-# paswordd
+## 📞 Contact
+- E Mail: Ufuktlh06@proton.me
+- [Linkedin](https://www.linkedin.com/in/ufuk-talha-avc%C4%B1-5078b727b/)
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Setup
+1. Setup flutter environment for your [platform](https://docs.flutter.dev/get-started/install)
+2. Clone the repository locally `git clone https://github.com/UF7K00/Factorial-Calculator.git`
+3. Open the project in terminal
+4. Run `flutter pub get` in terminal
+5. Then `flutter packages pub run build_runner build --delete-conflicting-outputs` (Must be done on each git pull)
+<ul>
+  <li>6.To build release run
+    <ul>
+      <li>For android: flutter build apk</li>
+      <li>For windows: flutter build windows</li>
+      <li>For linux: flutter build linux</li>
+    </ul>
+  </li>
+</ul>
