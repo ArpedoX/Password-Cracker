@@ -34,21 +34,26 @@ class _CrackPassAppState extends State<CrackPassApp> {
     });
   }
 
-  void crackPassword() {
+  void crackPassword() async {
     setState(() {
       isCracking = true;
+      step = 0;
+      guessedPassword = '';
       final input = inputController.text.split('');
       final password = passwordController.text;
 
-      Future.delayed(const Duration(milliseconds: 100), () {
+      Future<void> performCrack() async {
         while (password != guessedPassword) {
           step++;
           guessedPassword = _generateRandomPassword(input, password.length);
+          setState(() {});
         }
         setState(() {
           isCracking = false;
         });
-      });
+      }
+
+      performCrack();
     });
   }
 
@@ -77,30 +82,32 @@ class _CrackPassAppState extends State<CrackPassApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
+              textInputAction: TextInputAction.next,
               controller: inputController,
               decoration: const InputDecoration(
                 labelText: 'Characters to try',
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter some characters';
+                  return null;
                 }
                 return null;
               },
             ),
             TextFormField(
+              textInputAction: TextInputAction.done,
               controller: passwordController,
               decoration: const InputDecoration(
                 labelText: 'Password to crack',
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a password';
+                  return null;
                 }
                 return value;
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: isCracking ? null : crackPassword,
               child: const Text('Crack Password'),
