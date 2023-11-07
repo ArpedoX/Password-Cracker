@@ -18,4 +18,16 @@
   </li>
 </ul>
 
+## ❓ How it works
+The user is asked to enter characters that the programme can use (symbols, numbers and letters), for example, "1234567890", "+</?*" or "abcdeABCDE".
+The user enters the password he/she wants to solve.
+The programme starts decoding and tries to try the password by generating random characters at each step.
+When the password is found, the programme terminates and reports how many steps it has taken. 
+
+## 🧾 Considerations
+This application only tries to crack the password you have entered. Not illegal!
+
+## 🪪 LICENSE
+This project is licensed under the GNU General Public License, Version 3.0 (GPL-3.0). For more information, please read the [LICENSE](https://github.com/UF7K00/Password-Cracker/blob/main/LICENSE) file.
+
 _The project is still very new. Sorry for the problems..._
