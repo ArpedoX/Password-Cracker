@@ -97,7 +97,7 @@ class _CrackPassAppState extends State<CrackPassApp> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a password';
                 }
-                return null;
+                return value;
               },
             ),
             SizedBox(height: 10),
