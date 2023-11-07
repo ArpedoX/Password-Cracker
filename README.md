@@ -30,4 +30,5 @@ This application only tries to crack the password you have entered. Not illegal!
 ## 🪪 LICENSE
 This project is licensed under the GNU General Public License, Version 3.0 (GPL-3.0). For more information, please read the [LICENSE](https://github.com/UF7K00/Password-Cracker/blob/main/LICENSE) file.
 
+
 _The project is still very new. Sorry for the problems..._
