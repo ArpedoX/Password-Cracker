@@ -3,10 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CrackPassApp extends StatefulWidget {
-  const CrackPassApp({super.key});
+  CrackPassApp({super.key});
 
   @override
-  State<CrackPassApp> createState() => _CrackPassAppState();
+  // ignore: library_private_types_in_public_api
+  _CrackPassAppState createState() => _CrackPassAppState();
 }
 
 class _CrackPassAppState extends State<CrackPassApp> {
@@ -44,6 +45,7 @@ class _CrackPassAppState extends State<CrackPassApp> {
 
       Future<void> performCrack() async {
         while (password != guessedPassword) {
+          await Future.delayed(const Duration(microseconds: 0));
           step++;
           guessedPassword = _generateRandomPassword(input, password.length);
           setState(() {});
