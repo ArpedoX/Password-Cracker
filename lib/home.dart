@@ -83,31 +83,37 @@ class _CrackPassAppState extends State<CrackPassApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              controller: inputController,
-              decoration: const InputDecoration(
-                labelText: 'Characters to try',
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              child: TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: inputController,
+                decoration: const InputDecoration(
+                  labelText: 'Characters to try',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return null;
+                  }
+                  return value;
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return null;
-                }
-                return null;
-              },
             ),
-            TextFormField(
-              textInputAction: TextInputAction.done,
-              controller: passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password to crack',
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              child: TextFormField(
+                textInputAction: TextInputAction.done,
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  labelText: 'Password to crack',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return null;
+                  }
+                  return value;
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return null;
-                }
-                return value;
-              },
             ),
             const SizedBox(height: 10),
             ElevatedButton(

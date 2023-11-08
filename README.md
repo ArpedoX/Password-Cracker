@@ -22,7 +22,7 @@
 The user is asked to enter characters that the programme can use (symbols, numbers and letters), for example, "1234567890", "+</?*" or "abcdeABCDE".
 The user enters the password he/she wants to solve.
 The programme starts decoding and tries to try the password by generating random characters at each step.
-When the password is found, the programme terminates and reports how many steps it has taken. 
+When the password is found, the programme terminates and reports how many steps it has taken. _The number of digits is the number of digits of your password!_
 
 ## 🧾 Considerations
 This application only tries to crack the password you have entered. Not illegal!
