@@ -50,7 +50,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.paswordd"
+        applicationId "com.arpedox.password_cracker"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
