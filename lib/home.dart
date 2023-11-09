@@ -124,9 +124,13 @@ class _CrackPassAppState extends State<CrackPassApp> {
             if (isCracking)
               const CircularProgressIndicator()
             else
-              Text('Trying password: $guessedPassword'),
+              Text(
+                'Trying password: $guessedPassword',
+                textAlign: TextAlign.center,
+              ),
             Text(
               'Your password is ${passwordController.text} and it was cracked in $step steps.',
+              textAlign: TextAlign.center,
             ),
           ],
         ),
