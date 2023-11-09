@@ -32,7 +32,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.example.paswordd"
+    namespace "com.arpedox.password_cracker"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
