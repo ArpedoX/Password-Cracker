@@ -89,8 +89,8 @@ class _CrackPassAppState extends State<CrackPassApp> {
                 textInputAction: TextInputAction.next,
                 controller: inputController,
                 decoration: const InputDecoration(
-                  labelText: 'Characters to try',
-                ),
+                    labelText: 'Characters to try',
+                    prefixIcon: Icon(Icons.abc)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return null;
@@ -101,12 +101,13 @@ class _CrackPassAppState extends State<CrackPassApp> {
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(top: 10),
               child: TextFormField(
                 textInputAction: TextInputAction.done,
                 controller: passwordController,
                 decoration: const InputDecoration(
-                  labelText: 'Password to crack',
-                ),
+                    labelText: 'Password to crack',
+                    prefixIcon: Icon(Icons.key)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return null;
