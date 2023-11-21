@@ -19,7 +19,15 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.0'
-      
+
+      - name: Set Keystore Secrets
+        run: |
+          echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "KEY_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "${{ secrets.ANDROID_APP_KEYSTORE }}" | base64 -d > keystore.jks
+          echo "KEYSTORE_FILE=keystore.jks" >> $GITHUB_ENV
+
       - run: flutter pub get
       - run: flutter build apk --split-per-abi
 
