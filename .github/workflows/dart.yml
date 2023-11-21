@@ -1,45 +1,60 @@
-   name: Android Build and Release
+name: Build and Test
 
-   on:
-     push:
-       branches: [ "master" ]
+on:
+  push:
+    branches:
+      - main
 
-   jobs:
-     build_and_release:
-       runs-on: ubuntu-latest
+jobs:
+  build:
 
-       steps:
-         - uses: actions/checkout@v3
+    runs-on: ubuntu-latest
 
-         - uses: actions/setup-java@v3
-           with:
-             java-version: '11'
-             distribution: 'temurin'
-             cache: gradle
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
-         - name: Grant execute permission for gradlew
-           run: chmod +x gradlew
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-         - name: Build with Gradle
-           run: ./gradlew assembleRelease
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
 
-         - name: Create GitHub release
-           id: create_release
-           uses: actions/create-release@v1
-           env:
-             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           with:
-             tag_name: ${{ github.ref }}
-             release_name: Release ${{ github.ref }}
-             draft: false
-             prerelease: false
+    - name: Build on Linux/Windows
+      run: |
+        ./gradlew build  # Burada projenizin derleme komutunu yazmalısınız
+      if: matrix.os == 'ubuntu-latest' || matrix.os == 'windows-latest'
 
-         - name: Upload Release APK
-           uses: actions/upload-release-asset@v1.0.1
-           env:
-             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           with:
-             upload_url: ${{ steps.create_release.outputs.upload_url }}
-             asset_path: ./app/build/outputs/apk/release/app-release.apk
-             asset_name: app-release.apk
-             asset_content_type: application/vnd.android.package-archive
+    - name: Set up Android
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 28
+        script: sdkmanager "platform-tools" "platforms;android-28"  # Android derlemesi için gerekli ayarlar
+
+    - name: Build on Android
+      run: |
+        ./gradlew assembleDebug  # Burada Android için derleme komutunu yazmalısınız
+      if: matrix.os == 'ubuntu-latest'
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Run tests
+      run: |
+        ./gradlew test  # Burada test komutlarınızı yazmalısınız
+
